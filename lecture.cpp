@@ -1,52 +1,54 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int fyd(string c , vector<int>f , int pos){
-    vector<int>::iterator it;
-    it = find(f.begin() , f.end() , c);
-    pos = it - f.begin();
-}
-
 int main(){
    int n,m;
    cin>>n>>m;
+   vector<string> lang1;
+   vector<string> lang2;
+   vector<string> shortest;
 
-   string a,b,c;
-
-   vector<string>fl;
-   vector<string>sl;
-
-   for(int i=0 ;i<m ; i++){
+   for(int i=0 ; i<m ; i++){
+       string a,b;
        cin>>a>>b;
-       fl.push_back(a);
-       sl.push_back(b);
+       int p= a.size();
+       int q= b.size();
+       lang1.push_back(a);
+       lang2.push_back(b);
+       if(p<= q){
+           shortest.push_back(a);
+       }
+       else{
+           shortest.push_back(b);
+       }
    }
 
-   vector<string>le;
+//    cout<< shortest[0]<<shortest[1]<<shortest[2];
 
+   vector<string>sent;
    for(int i=0 ; i<n ; i++){
-       cin>>c;
-       le.push_back(c);
+       string d;
+       cin>>d;
+       sent.push_back(d);
    }
 
-   vector<string>ans;
-
+   vector<string>correct;
+   int ans;
    for(int i=0 ; i<n ; i++){
-      //the position of each word of le vector in fl vector 
-      int p;
-      fyd(c[i], fl , p);
-      int x =fl[p].size();
-      int y =sl[p].size();
-      if(x<=y){
-          ans.push_back(fl[p]);
-      }
-      else{
-          ans.push_back(sl[p]);
-      }
+       auto it = find(lang1.begin() , lang1.end(), sent[i]);
+
+    if(it != lang1.end()){
+        ans = (it-lang1.begin());
+        // cout<< ans ;
+    correct.push_back(shortest[ans]);
+    }
    }
-//    vector<int>::iterator it;
-//    for(it = ans.begin() ; it != ans.end() ; it++){
-//        cout<<*it;
-//    }
+
+//    cout<< correct.size();
+
+   vector<string>::iterator it;
+   for(it = correct.begin() ; it != correct.end() ; it++){
+       cout<< *it <<" ";
+   }
 return 0;
 }
