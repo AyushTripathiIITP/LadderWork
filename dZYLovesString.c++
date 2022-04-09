@@ -5,30 +5,30 @@ int main(){
    string s;
    cin>>s;
 
-   vector<int>alpha;
-
    int k;
    cin>>k;
 
-   for(int i=0 ; i<26 ; i++){
-       int num;
-       cin>>num;
-       alpha.push_back(num);
-   }
-
-   sort(alpha.begin() , alpha.end());
-
-   int max= alpha[25];
    int base(0);
 
-   int maximizer = s.size() + k ;
+   map<int,int>g1;
 
-   while(k !=0){
-       base += max*(maximizer - k);
-       --k;
+   for(int i=0 ; i< 26 ; i++){
+       int num;
+       cin>>num;
+       g1.insert(pair<int,int>( 97 + i , num));
    }
 
-   cout<<base<<"\n";
+   for(int i=0 ; i< s.size() - 1 ; i++){
+       int t = (int)s[i];
+       auto it = g1.find(t);
+       int value = it->second ;
+       base += value*(i+1);
+   }
+ 
+    auto itr = g1.find((int)s[s.size() - 1]);
+    int last = itr-> second ;
+    base += last * (s.size() + k );
 
+   cout<<base<<"\n";
 return 0;
 }
