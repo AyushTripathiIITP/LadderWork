@@ -11,7 +11,7 @@ b = 234
 print(a+b)
 
 print(type(a))
-working till now
+#working till now
 print(a , a ,a )
 
 #estimating floating decimal by changing declaration
@@ -26,7 +26,7 @@ state1 = "UK"
 print(name1 , "is from",state1)
 print("{} is from {}"  .format(name1, state1))
 #fstring
-print(f "{name1} is from {state1}") 
+#print(f "{name1} is from {state1}") 
 k = [[1,2,3], [2,3,4], [2,3,[4,5]]]
 #locating arrays
 print(k[2][2][1])
